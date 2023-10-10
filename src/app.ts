@@ -29,7 +29,7 @@ function getMlsAddress(address: string, zipcode: string){
 async function tetherScrape(mlsOrAddress: string) {
   const browser = await puppeteer.launch({
     executablePath: puppeteer.executablePath("chrome"),
-    headless: false,
+    headless: true,
     defaultViewport: null,
   });
   // const browser = await puppeteer.launch();
