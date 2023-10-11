@@ -8,7 +8,6 @@ async function redfinAddressScrape(mlsOrAddress: string) {
       headless: false,
       defaultViewport: null,
     });
-    // const browser = await puppeteer.launch();
     const page = await browser.newPage();
     page.setDefaultNavigationTimeout(0);
   
@@ -48,17 +47,17 @@ async function redfinAddressScrape(mlsOrAddress: string) {
     const state = cityStateZip?.split(",")[1].split(" ")[1];
     const zip = cityStateZip?.split(",")[1].split(" ")[2];
   
-    const acresX = await page.$$("[class='table-value']");
+    const lotSizeX = await page.$$("[class='table-value']");
     // LOT SIZE LABEL
-    // const acresXLabel = await page.$$("[class='table-label']");
-    // const acresLabel = await (
-    //   await acresXLabel[4].getProperty("textContent")
+    // const lotSizeXLabel = await page.$$("[class='table-label']");
+    // const lotSizeLabel = await (
+    //   await lotSizeXLabel[4].getProperty("textContent")
     // ).jsonValue();
-    const acres = await (
-      await acresX[4].getProperty("textContent")
+    const lotSize = await (
+      await lotSizeX[4].getProperty("textContent")
     ).jsonValue();
-    // const acres = acresValue?.replace(" Acre", "");
-    console.log(acres);
+    // const lotSize = acresValue?.replace(" Acre", "");
+    console.log(lotSize);
   
     const mlsX = await page.$("[class='ListingSource--mlsId']");
     const mls = await (await mlsX?.getProperty("textContent"))?.jsonValue();
@@ -83,7 +82,7 @@ async function redfinAddressScrape(mlsOrAddress: string) {
         bedrooms: bedrooms,
         bathrooms: bathrooms,
         sqft: removeSymbols(sqft as string),
-        acres: acres,
+        lot_Size: lotSize,
         city: city,
         state: state,
         zip: zip,
@@ -95,5 +94,5 @@ async function redfinAddressScrape(mlsOrAddress: string) {
   
     return mlsData;
   }
-  // tetherScrape("98874658");
+
   export {redfinAddressScrape};
