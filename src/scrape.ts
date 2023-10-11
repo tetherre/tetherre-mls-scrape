@@ -2,7 +2,7 @@ import puppeteer from "puppeteer";
 
 import { removeSymbols } from "./helper";
 
-async function tetherScrape(mlsOrAddress: string) {
+async function redfinScrape(mlsOrAddress: string) {
     const browser = await puppeteer.launch({
       executablePath: puppeteer.executablePath("chrome"),
       headless: false,
@@ -98,4 +98,4 @@ async function tetherScrape(mlsOrAddress: string) {
   }
   // tetherScrape("719 Rimview Lane West, 92407");
   // tetherScrape("98874658");
-  export {tetherScrape};
+  export {redfinScrape};
