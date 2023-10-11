@@ -1,22 +1,22 @@
 class Address {
     address: string;
-    address2: string;
     city: string;
     state: string;
     zipcode: string;
+    address2: string;
   
     constructor(
       address: string,
-      address2: string,
       city: string,
       state: string,
-      zipcode: string
+      zipcode: string,
+      address2?: string
     ) {
       this.address = address;
-      this.address2 = address2;
       this.city = city;
       this.state = state;
       this.zipcode = zipcode;
+      this.address2 = address2;
     }
   
     get redfinAddress(): string {

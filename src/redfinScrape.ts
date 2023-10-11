@@ -2,7 +2,7 @@ import puppeteer from "puppeteer";
 
 import { removeSymbols } from "./helper";
 
-async function redfinScrape(mlsOrAddress: string) {
+async function redfinAddressScrape(mlsOrAddress: string) {
     const browser = await puppeteer.launch({
       executablePath: puppeteer.executablePath("chrome"),
       headless: false,
@@ -48,18 +48,17 @@ async function redfinScrape(mlsOrAddress: string) {
     const state = cityStateZip?.split(",")[1].split(" ")[1];
     const zip = cityStateZip?.split(",")[1].split(" ")[2];
   
-    // ACRES
     const acresX = await page.$$("[class='table-value']");
+    // LOT SIZE LABEL
     // const acresXLabel = await page.$$("[class='table-label']");
     // const acresLabel = await (
     //   await acresXLabel[4].getProperty("textContent")
     // ).jsonValue();
-    const acresValue = await (
+    const acres = await (
       await acresX[4].getProperty("textContent")
     ).jsonValue();
-    const acres = acresValue?.replace(" Acre", "");
+    // const acres = acresValue?.replace(" Acre", "");
     console.log(acres);
-    // console.log('label ' + acresLabel)
   
     const mlsX = await page.$("[class='ListingSource--mlsId']");
     const mls = await (await mlsX?.getProperty("textContent"))?.jsonValue();
@@ -96,6 +95,5 @@ async function redfinScrape(mlsOrAddress: string) {
   
     return mlsData;
   }
-  // tetherScrape("719 Rimview Lane West, 92407");
   // tetherScrape("98874658");
-  export {redfinScrape};
+  export {redfinAddressScrape};

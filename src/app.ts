@@ -1,12 +1,12 @@
-import { redfinScrape } from "./scrape";
+import { redfinAddressScrape } from "./redfinScrape";
 import { Address } from "./address_class";
 
 
-function getMlsByAddress(address: string, address2: string, city: string, state: string, zipcode: string){
-  const lookupAddress = new Address(address, address2, city, state, zipcode);
+function getMlsByAddress(address: string, city: string, state: string, zipcode: string, address2?: string){
+  const lookupAddress = new Address(address, zipcode, city, state, address2);
   console.log(lookupAddress.redfinAddress);  
 
-  redfinScrape(lookupAddress.redfinAddress);
+  redfinAddressScrape(lookupAddress.redfinAddress);
 }
 
-getMlsByAddress('6792 houston st','','Buena Park', 'CA', '90620');
+getMlsByAddress('719 Rimview Ln W','Twin Falls', 'ID', '83301');
