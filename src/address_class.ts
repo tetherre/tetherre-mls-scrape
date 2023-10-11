@@ -10,7 +10,7 @@ class Address {
       city: string,
       state: string,
       zipcode: string,
-      address2?: string
+      address2: string
     ) {
       this.address = address;
       this.city = city;
@@ -22,6 +22,11 @@ class Address {
     get redfinAddress(): string {
       return `${this.address}, ${this.zipcode}`;
     }
+
+    get fullAddress(): string {
+        return `${this.address} ${this.address2}, ${this.city} ${this.state} ${this.zipcode}`;
+      }
+
   }
 
   export { Address };

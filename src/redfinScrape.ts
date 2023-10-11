@@ -23,7 +23,7 @@ async function redfinAddressScrape(mlsOrAddress: string) {
   
     const infoX = await page.$$("[class='statsValue']");
   
-    const [price, bathrooms, bedrooms, sqft] = await Promise.all([
+    const [price, bedrooms, bathrooms, sqft] = await Promise.all([
       (await infoX[0].getProperty("textContent")).jsonValue(),
       (await infoX[1].getProperty("textContent")).jsonValue(),
       (await infoX[2].getProperty("textContent")).jsonValue(),

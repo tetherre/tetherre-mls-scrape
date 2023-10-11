@@ -11,3 +11,6 @@ function getMlsByAddress(address: string, city: string, state: string, zipcode: 
 
   redfinAddressScrape(lookupAddress.redfinAddress);
 }
+
+// getMlsByAddress('719 Rimview Ln W','Twin Falls', 'ID', '83301');
+getMlsByMls('98890953');
