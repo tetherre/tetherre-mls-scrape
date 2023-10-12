@@ -29,4 +29,20 @@ class Address {
 
   }
 
-  export { Address };
+  
+  class MlsId {
+    mlsId: string;
+    mlsSource: string;
+  
+    constructor(
+      mlsId: string,
+      mlsSource: string,
+    ) {
+      this.mlsId = mlsId;
+      this.mlsSource = mlsSource;
+    }
+
+  }
+
+
+  export { Address, MlsId };
