@@ -13,6 +13,7 @@ exports.handler = async (context: string, callback: any) => {
             executablePath: await chromium.executablePath,
             headless: chromium.headless,
             defaultViewport: chromium.defaultViewport,
+            ignoreHTTPSErrors: true,
         });
         const page = await browser.newPage();
         page.setDefaultNavigationTimeout(0);
