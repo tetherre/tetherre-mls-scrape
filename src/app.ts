@@ -11,11 +11,11 @@ const scrapeType = {"scrapeType": "address",
                         "zipcode": "83301"
                       }}
 
-const scrapeMls = {"scrapeType": "mlsId",
-                    "scrapeRequest": {
-                      "mlsId": "98874658",
-                      "mlsSource": "imls"
-                    }}
+// const scrapeMls = {"scrapeType": "mlsId",
+//                     "scrapeRequest": {
+//                       "mlsId": "98874658",
+//                       "mlsSource": "imls"
+//                     }}
 
 
 // FUNCS
@@ -46,14 +46,14 @@ function pickAScrape(scrapetype: string) {
   }
 }
 
-function pickAScrape2(scrapetype: string) {
-  const info = scrapeMls["scrapeRequest"];
-  if (scrapeMls["scrapeType"] === "address") {
-    getMlsByAddress(info["address"], info['city'], info['state'],info['zipcode'],info['address2'])    
-    }
-   else if (scrapeMls["scrapeType"] === "mlsId") {
-    getMlsByMls(info["mlsId"], info["mlsSouce"])    
-  } else {
-    throw error;
-  }
-}
+// function pickAScrape2(scrapetype: string) {
+//   const info = scrapeMls["scrapeRequest"];
+//   if (scrapeMls["scrapeType"] === "address") {
+//     getMlsByAddress(info["address"], info['city'], info['state'],info['zipcode'],info['address2'])    
+//     }
+//    else if (scrapeMls["scrapeType"] === "mlsId") {
+//     getMlsByMls(info["mlsId"], info["mlsSouce"])    
+//   } else {
+//     throw error;
+//   }
+// }
