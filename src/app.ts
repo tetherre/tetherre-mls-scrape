@@ -16,12 +16,12 @@ const scrapeType = {"scrapeType": "address",
 function getMlsByAddress(address: string, city: string, state: string, zipcode: string, address2?: string){
   const lookupAddress = new Address(address, city, state, zipcode, address2);
   console.log(lookupAddress.redfinAddress);  
-  redfinAddressScrape(lookupAddress.redfinAddress);
+  return redfinAddressScrape(lookupAddress.redfinAddress);
 }
 
 function getMlsByMls(mls: string, mlsSource?: string){
   const lookupMls = new MlsId(mls, mlsSource)
-  redfinAddressScrape(lookupMls.mlsId);
+  return redfinAddressScrape(lookupMls.mlsId);
 }
 
 
@@ -30,10 +30,10 @@ function pickAScrape(scrapetype: string) {
   const info = scrapeType["scrapeRequest"];
   // check for integrity of data
   if (scrapeType["scrapeType"] === "address") {
-    getMlsByAddress(info["address"], info['city'], info['state'],info['zipcode'],info['address2'])    
+    return getMlsByAddress(info["address"], info['city'], info['state'],info['zipcode'],info['address2'])    
     }
    else if (scrapeType["scrapeType"] === "mlsId") {
-    getMlsByMls(info["mlsId"], info["mlsSouce"])    
+    return getMlsByMls(info["mlsId"], info["mlsSouce"])    
   } else {
     throw error;
   }
