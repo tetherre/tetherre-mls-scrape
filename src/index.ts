@@ -1,11 +1,13 @@
 import puppeteer from "puppeteer";
 import chromium from 'chrome-aws-lambda';
 
-import { removeSymbols } from "./helper";
-
 exports.handler = async (context: string, callback: any) => {
     let result = null;
     let browser = null;
+    
+    const removeSymbols = (string: string) => {
+      return string.replace(/[!-\/:-@[-`{-~]/g, "");
+    };
 
     try {
         const browser = await chromium.puppeteer.launch({
@@ -103,4 +105,3 @@ exports.handler = async (context: string, callback: any) => {
   }
   return callback(null, result);
 }
-//   export {redfinAddressScrape};
