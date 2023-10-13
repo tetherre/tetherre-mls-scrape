@@ -53,15 +53,9 @@ exports.handler = async (context: string, callback: any) => {
         const zip = cityStateZip?.split(",")[1].split(" ")[2];
     
         const lotSizeX = await page.$$("[class='table-value']");
-        // LOT SIZE LABEL
-        // const lotSizeXLabel = await page.$$("[class='table-label']");
-        // const lotSizeLabel = await (
-        //   await lotSizeXLabel[4].getProperty("textContent")
-        // ).jsonValue();
         const lotSize = await (
         await lotSizeX[4].getProperty("textContent")
         ).jsonValue();
-        // const lotSize = acresValue?.replace(" Acre", "");
         console.log(lotSize);
     
         const mlsX = await page.$("[class='ListingSource--mlsId']");
