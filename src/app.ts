@@ -10,12 +10,6 @@ const scrapeType = {"scrapeType": "address",
                         "state": "ID",
                         "zipcode": "83301"
                       }}
-
-// const scrapeMls = {"scrapeType": "mlsId",
-//                     "scrapeRequest": {
-//                       "mlsId": "98874658",
-//                       "mlsSource": "imls"
-//                     }}
                    
 
 // FUNCS
@@ -29,11 +23,9 @@ function getMlsByMls(mls: string, mlsSource?: string){
   const lookupMls = new MlsId(mls, mlsSource)
   redfinAddressScrape(lookupMls.mlsId);
 }
-// FUNCS
 
 
-
-// different objects for testing purposes
+// MAIN SCRAPE
 function pickAScrape(scrapetype: string) {
   const info = scrapeType["scrapeRequest"];
   // check for integrity of data
@@ -46,9 +38,18 @@ function pickAScrape(scrapetype: string) {
     throw error;
   }
 }
+// EXECUTE SCRAPE
+// pickAScrape(scrapeType['scrapeType']);
 
-pickAScrape(scrapeType['scrapeType']);
 
+
+
+// TEST FOR SCRAPE VIA MLS
+// const scrapeMls = {"scrapeType": "mlsId",
+//                     "scrapeRequest": {
+//                       "mlsId": "98874658",
+//                       "mlsSource": "imls"
+//                     }}
 
 // 2nd function is made to test the mlsid search portion 
 // function pickAScrape2(scrapetype: string) {
