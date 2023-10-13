@@ -18,9 +18,14 @@ class Address {
       this.zipcode = zipcode;
       this.address2 = address2;
     }
-  
+
     get redfinAddress(): string {
-      return `${this.address}, ${this.zipcode}`;
+      if (this.address2 ?? '') {
+        return `${this.address} ${this.address2}, ${this.zipcode}`;
+      } else {
+        return `${this.address}, ${this.zipcode}`;
+      }
+      
     }
 
     get fullAddress(): string {
@@ -29,7 +34,7 @@ class Address {
 
   }
 
-  
+
   class MlsId {
     mlsId: string;
     mlsSource: string;

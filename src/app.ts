@@ -5,18 +5,18 @@ import { error } from "console";
 const scrapeType = {"scrapeType": "address",
                       "scrapeRequest": {
                         "address": "719 Rimview Ln W",
-                        "address2": "",
+                        "address2": '',
                         "city": "Twin Falls",
                         "state": "ID",
                         "zipcode": "83301"
                       }}
 
-const scrapeMls = {"scrapeType": "mlsId",
-                    "scrapeRequest": {
-                      "mlsId": "98874658",
-                      "mlsSource": "imls"
-                    }}
-
+// const scrapeMls = {"scrapeType": "mlsId",
+//                     "scrapeRequest": {
+//                       "mlsId": "98874658",
+//                       "mlsSource": "imls"
+//                     }}
+                   
 
 // FUNCS
 function getMlsByAddress(address: string, city: string, state: string, zipcode: string, address2?: string){
@@ -36,6 +36,7 @@ function getMlsByMls(mls: string, mlsSource?: string){
 // different objects for testing purposes
 function pickAScrape(scrapetype: string) {
   const info = scrapeType["scrapeRequest"];
+  // check for integrity of data
   if (scrapeType["scrapeType"] === "address") {
     getMlsByAddress(info["address"], info['city'], info['state'],info['zipcode'],info['address2'])    
     }
@@ -46,14 +47,21 @@ function pickAScrape(scrapetype: string) {
   }
 }
 
-function pickAScrape2(scrapetype: string) {
-  const info = scrapeMls["scrapeRequest"];
-  if (scrapeMls["scrapeType"] === "address") {
-    getMlsByAddress(info["address"], info['city'], info['state'],info['zipcode'],info['address2'])    
-    }
-   else if (scrapeMls["scrapeType"] === "mlsId") {
-    getMlsByMls(info["mlsId"], info["mlsSouce"])    
-  } else {
-    throw error;
-  }
-}
+pickAScrape(scrapeType['scrapeType']);
+
+
+// 2nd function is made to test the mlsid search portion 
+// function pickAScrape2(scrapetype: string) {
+//   const info = scrapeMls["scrapeRequest"];
+//   if (scrapeMls["scrapeType"] === "address") {
+//     getMlsByAddress(info["address"], info['city'], info['state'],info['zipcode'],info['address2'])    
+//     }
+//    else if (scrapeMls["scrapeType"] === "mlsId") {
+//     getMlsByMls(info["mlsId"], info["mlsSouce"])    
+//   } else {
+//     throw error;
+//   }
+// }
+
+// pickAScrape2(scrapeMls['scrapeType']);
+
