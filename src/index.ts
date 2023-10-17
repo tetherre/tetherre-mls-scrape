@@ -94,7 +94,6 @@ exports.handler = async (event, context, callback) => {
         const mlsData = JSON.stringify(res);
         console.log(mlsData);
     
-        // return mlsData;
         result = mlsData;
   } catch (error) {
     return callback(error);
