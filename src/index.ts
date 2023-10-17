@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import chromium from 'chrome-aws-lambda';
 
-exports.handler = async (context: string, callback: any) => {
+exports.handler = async (event, context, callback) => {
     let result = null;
     let browser = null;
     
@@ -23,7 +23,7 @@ exports.handler = async (context: string, callback: any) => {
         await page.goto("https://www.redfin.com/");
         console.log("launched");
     
-        await page.type("#search-box-input", context, { delay: 0 });
+        await page.type("#search-box-input", event, { delay: 0 });
         await Promise.all([
         page.waitForNavigation({ waitUntil: "domcontentloaded" }),
         page.click(".inline-block.SearchButton.clickable.float-right"),
